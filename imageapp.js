@@ -9,39 +9,57 @@ console.log('Arrays Code')
 
 let skinSet = ['ellephoenix.png','mobster.png','undead.png','woman.png']
 let buildSet = ['diningroom.png','hallway.png', 'beefarm.png','willowisps.png']
+
+//Multidimensional array
 let twoArrays = [skinSet,buildSet]
-
-//Set images
-
 
 
 /**
  * 
  * @param {object} ev 
  * @returns - void
- * 
+ * takes in object ev when image is double clicked
  */
 function UpdateThumbnails(ev){
+    let j = 0;
     let switcher = document.getElementById('ellephoenix');
     switcherFileName = switcher.src.split('/').pop();
     skinSetFileName = skinSet[0]
     console.log('Switcher source: ' + switcher);
     console.log('SkinSet Source: ' + skinSet[0]);
+
+    //multidimentional array stores the objects that will be changed
+    let imageThumbnails = [document.getElementById('ellephoenix'),document.getElementById('mobster'),document.getElementById('ice_king'),document.getElementById('woman')];
     
-    if (switcherFileName === skinSetFileName){
-        console.log('Switching to buildSet');
-        document.getElementById('ellephoenix').src = 'images/' + buildSet[0];
-        document.getElementById('mobster').src = 'images/' + buildSet[1];
-        document.getElementById('ice_king').src = 'images/' + buildSet[2];
-        document.getElementById('woman').src = 'images/' + buildSet[3];
-        
+    if(switcherFileName === skinSetFileName){
+        console.log('Switching to Buildset')
+        j = 1
     }else{
-        console.log('Switching to skinSet');
-        document.getElementById('ellephoenix').src = 'images/' + skinSet[0];
-        document.getElementById('mobster').src = 'images/' + skinSet[1];
-        document.getElementById('ice_king').src = 'images/' + skinSet[2];
-        document.getElementById('woman').src = 'images/' + skinSet[3];
+        console.log('Switching to Skin Set')
+        j = 0
     }
+
+
+    for(i = 0; i < imageThumbnails.length; i++){
+        imageThumbnails[i].src = 'images/' + twoArrays[j][i];
+    }
+
+
+    //Old code
+    // if (switcherFileName === skinSetFileName){
+    //     console.log('Switching to buildSet');
+    //     document.getElementById('ellephoenix').src = 'images/' + buildSet[0];
+    //     document.getElementById('mobster').src = 'images/' + buildSet[1];
+    //     document.getElementById('ice_king').src = 'images/' + buildSet[2];
+    //     document.getElementById('woman').src = 'images/' + buildSet[3];
+        
+    // }else{
+    //     console.log('Switching to skinSet');
+    //     document.getElementById('ellephoenix').src = 'images/' + skinSet[0];
+    //     document.getElementById('mobster').src = 'images/' + skinSet[1];
+    //     document.getElementById('ice_king').src = 'images/' + skinSet[2];
+    //     document.getElementById('woman').src = 'images/' + skinSet[3];
+    // }
 
     
 
